@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Community Event Portal</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            background-color: #f0f8ff;
+        }
+    </style>
+
+</head>
+<script>
+    console.log("Local Community Event Portal loaded successfully.");
+console.log("Debugging started using Chrome DevTools.");
+    function validatePhone() {
+    let phone = document.getElementById("phone").value;
+    let phoneError = document.getElementById("phoneError");
+
+    if (phone.length !== 10 || isNaN(phone)) {
+        phoneError.innerText = "Please enter a valid 10 digit phone number.";
+        phoneError.style.color = "red";
+    } else {
+        phoneError.innerText = "Phone number is valid.";
+        phoneError.style.color = "green";
+    }
+}
+
+function showEventFee() {
+
+    let fee =
+    document.getElementById("eventType").value;
+
+    let eventFee =
+    document.getElementById("eventFee");
+
+    if (fee === "") {
+
+        eventFee.innerText = "";
+
+    } else if (fee === "Free") {
+
+        eventFee.innerText =
+        "Event Fee: Free";
+
+    } else {
+
+        eventFee.innerText =
+        "Event Fee: ₹" + fee;
+    }
+}
+
+function submitFeedback() {
+    alert("Feedback submitted successfully!");
+}
+
+function enlargeImage(image) {
+    image.width = 300;
+    image.height = 220;
+}
+
+function countCharacters() {
+    let text = document.getElementById("feedbackText").value;
+    document.getElementById("charCount").innerText = text.length;
+}
+
+
+/* NEWLY ADD THIS */
+
+function videoReady() {
+    document.getElementById("videoMessage")
+    .innerText = "Video ready to play";
+}
+
+window.onbeforeunload = function () {
+    return "Are you sure you want to leave the page?";
+};
+function savePreference() {
+    let selectedEvent = document.getElementById("preferredEvent").value;
+
+    localStorage.setItem("preferredEvent", selectedEvent);
+    sessionStorage.setItem("lastSelectedEvent", selectedEvent);
+
+    document.getElementById("preferenceMessage").innerText =
+    "Preference saved successfully.";
+}
+
+window.onload = function () {
+    let savedEvent = localStorage.getItem("preferredEvent");
+
+    if (savedEvent) {
+        document.getElementById("preferredEvent").value = savedEvent;
+    }
+};
+
+function clearPreferences() {
+    localStorage.clear();
+    sessionStorage.clear();
+
+    document.getElementById("preferredEvent").value = "";
+    document.getElementById("preferenceMessage").innerText =
+    "Preferences cleared.";
+}
+function findNearbyEvents() {
+    let locationResult = document.getElementById("locationResult");
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            showPosition,
+            showError,
+            {
+                enableHighAccuracy: true,
+                timeout: 5000
+            }
+        );
+    } else {
+        locationResult.innerText =
+        "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    document.getElementById("locationResult").innerHTML =
+    "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+}
+
+function showError(error) {
+    let locationResult = document.getElementById("locationResult");
+
+    if (error.code === error.PERMISSION_DENIED) {
+        locationResult.innerText =
+        "Location permission denied.";
+    } else if (error.code === error.TIMEOUT) {
+        locationResult.innerText =
+        "Location request timed out.";
+    } else {
+        locationResult.innerText =
+        "Unable to get location.";
+    }
+}
+</script>
+<body>
+
+</body>
+
+    <!-- Navigation Section -->
+    <nav>
+        <a href="#home">Home</a> |
+        <a href="#gallery">Gallery</a> |
+        <a href="#contact">Contact</a> |
+        <!-- Help Section -->
+        <a href="help.html">Help</a>
+    </nav>
+
+    <!-- Main Section -->
+    <main>
+
+        <!-- Home Section -->
+        <section id="home">
+
+            <div id="welcomeBanner">
+
+                <h1 id="mainHeader">
+    Welcome to Local Community Event Portal
+    </h1>
+
+                <p class="highlight">
+                    Residents can register for community events here.
+                </p>
+
+                <p>
+                    <span style="color:red; font-weight:bold;">
+                        Special Offer:
+                    </span>
+                    Free registration for first-time participants.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- Community Events Gallery -->
+        <section id="gallery">
+
+            <h2>Community Events Gallery</h2>
+
+            <table>
+
+                <tr>
+
+                   <td class="eventCard">
+                        <img src="images/event1.jpg"
+                            alt="Community Rally"
+                            title="Community Rally"
+                            width="200"
+                            height="150"
+                            ondblclick="enlargeImage(this)">
+                        <p><b>Community Rally</b></p>
+                    </td>
+
+                    <td class="eventCard">
+                        <img src="images/event2.jpg"
+                            alt="Community Music Event"
+                            title="Community Music Event"
+                            width="200"
+                            height="150"
+                            ondblclick="enlargeImage(this)">
+                        <p><b>Community Music Event</b></p>
+                    </td>
+
+                    <td class="eventCard">
+                        <img src="images/event3.jpg"
+                            alt="Food Festival"
+                            title="Food Festival"
+                            width="200"
+                            height="150"
+                            ondblclick="enlargeImage(this)">
+                        <p><b>Food Festival</b></p>
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td class="eventCard">
+                        <img src="images/event4.jpg"
+                            alt="Community Sports Event"
+                            title="Community Sports Event"
+                            width="200"
+                            height="150"
+                            ondblclick="enlargeImage(this)">
+                        <p><b>Community Sports Event</b></p>
+                    </td>
+
+                    <td class="eventCard">
+                        <img src="images/event5.jpg"
+                            alt="Tree Plantation"
+                            title="Tree Plantation"
+                            width="200"
+                            height="150"
+                            ondblclick="enlargeImage(this)">
+                        <p><b>Tree Plantation</b></p>
+                    </td>
+
+                    <td class="eventCard">
+                        <img src="images/event6.jpg"
+                            alt="Health Checkup Camp"
+                            title="Health Checkup Camp"
+                            width="200"
+                            height="150"
+                            ondblclick="enlargeImage(this)">
+                        <p><b>Health Checkup Camp</b></p>
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </section>
+    
+<!-- Event Registration Form -->
+<section id="registration">
+
+    <h2>Event Registration Form</h2>
+
+    <form onsubmit="showConfirmation(event)">
+
+        <label> Name:</label><br>
+        <input type="text"
+               id="name"
+               placeholder="Enter your name"
+               required
+               autofocus><br><br>
+
+        <label> Email:</label><br>
+        <input type="email"
+               id="email"
+               placeholder="Enter your email"
+               required><br><br>
+
+        <label> Event Date:</label><br>
+        <input type="date"
+               id="eventDate"
+               required><br><br>
+
+        <label> Event Type:</label><br>
+        <select id="eventType"
+                onchange="showEventFee()"
+                required>
+
+            <option value="">Select an event</option>
+            <option value="50">Community Rally</option>
+            <option value="40">Community Music Event</option>
+            <option value="100">Food Festival</option>
+            <option value="60">Community Sports Event</option>
+            <option value="80">Tree Plantation</option>
+            <option value="Free">Health Checkup Camp</option>
+
+        </select>
+
+        <p id="eventFee"></p>
+
+        <label> Message:</label><br>
+        <textarea id="message"
+                  placeholder="Write your message">
+        </textarea><br><br>
+
+        <button type="submit"
+                style="background-color: green;
+                       color: white;
+                       padding: 8px 15px;
+                       border: none;
+                       border-radius: 5px;">
+            Register
+        </button>
+
+        <br><br>
+
+        <output id="confirmationMessage"></output>
+
+    </form>
+
+</section>
+        <!-- Event Feedback with Event Handling -->
+
+<section id="feedback">
+
+    <h2>Event Feedback</h2>
+
+    <label>Phone Number:</label><br>
+    <input type="text"
+           id="phone"
+           placeholder="Enter 10 digit phone number"
+           onblur="validatePhone()">
+    <p id="phoneError"></p>
+
+    <label>Select Event:</label><br>
+    <select id="feedbackEvent">
+        <option value="">Select Event</option>
+        <option>Community Rally</option>
+        <option>Community Music Event</option>
+        <option>Food Festival</option>
+        <option>Community Sports Event</option>
+        <option>Tree Plantation</option>
+        <option>Health Checkup Camp</option>
+    </select><br><br>
+
+    <label>Your Feedback:</label><br>
+    <textarea id="feedbackText"
+              placeholder="Write your feedback"
+              onkeyup="countCharacters()"></textarea>
+
+    <p>
+        Characters typed:
+        <span id="charCount">0</span>
+    </p>
+
+    <button type="button"
+            onclick="submitFeedback()"
+            style="background-color: green;
+                   color: white;
+                   padding: 8px 15px;
+                   border: none;
+                   border-radius: 5px;">
+        Submit Feedback
+    </button>
+
+</section>
+<!-- Video Invite Section -->
+<section id="videoInvite">
+
+    <h2>Event Promo Video</h2>
+
+    <video width="400"
+           controls
+           oncanplay="videoReady()">
+
+        <source src="media/event-video.mp4"
+                type="video/mp4">
+
+        Your browser does not support the video tag.
+
+    </video>
+
+    <p id="videoMessage"></p>
+
+</section>
+<!-- Saving User Preferences -->
+<section id="preferences">
+
+    <h2>Save Event Preference</h2>
+
+    <label>Preferred Event Type:</label><br>
+    <select id="preferredEvent" onchange="savePreference()">
+        <option value="">Select Event</option>
+        <option value="Music Event">Music Event</option>
+        <option value="Health Checkup">Health Checkup</option>
+        <option value="Plantation Drive">Plantation Drive</option>
+        <option value="Sports Event">Sports Event</option>
+    </select>
+
+    <br><br>
+
+    <button type="button" onclick="clearPreferences()">
+        Clear Preferences
+    </button>
+
+    <p id="preferenceMessage"></p>
+
+</section>
+<!-- Geolocation Section -->
+<section id="location">
+
+    <h2>Find Nearby Events</h2>
+
+    <button type="button" onclick="findNearbyEvents()">
+        Find Nearby Events
+    </button>
+
+    <p id="locationResult"></p>
+
+</section>
+<section id="news">
+
+    <h2>Community News Bulletin</h2>
+
+    <div class="newsArticle">
+
+        The local community recently organized several successful events including health checkup camps, sports activities, tree plantation drives, and food festivals. Residents actively participated in these events and appreciated the efforts taken to improve community bonding and public health.
+
+        The city council also announced new awareness programs to encourage environmental sustainability, cultural activities, and volunteer services. More community events will be organized in the coming months to bring people together and improve local engagement.
+
+    </div>
+
+</section>
+<p class="hiddenExample">
+    This text uses visibility:hidden
+</p>
+
+<p class="noneExample">
+    This text uses display:none
+</p>
+
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 style="color:red;">Contact</h2>
+            <p>Email: community@cityportal.com</p>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 Local Community Event Portal</p>
+    </footer>
+
+</body>
+
+</html>
