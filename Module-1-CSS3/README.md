@@ -196,9 +196,6 @@ Verified that the website works properly on different screen sizes.
 
 ```text
 Module-1-CSS3
-│── index.html
-│── styles.css
-│── README.md
 │── images/
 │   ├── background.jpg
 │   ├── event1.jpg
@@ -209,4 +206,7 @@ Module-1-CSS3
 │   └── event6.jpg
 │── media/
 │   └── event-video.mp4
+│── README.md
+│── index.html
+└── styles.css
 ```
