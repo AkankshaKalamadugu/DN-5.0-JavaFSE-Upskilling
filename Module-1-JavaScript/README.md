@@ -154,8 +154,8 @@ Practiced modern JavaScript concepts:
 Module-1-JavaScript
 │── images/
 │── media/
-│── index.html
-│── styles.css
-│── main.js
 │── README.md
+│── index.html
+│── main.js
+│── styles.css
 ```
