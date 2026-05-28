@@ -30,17 +30,6 @@ p {
 }
 
 
-/* Body Background */
-/* Body Background */
-body {
-    background-color: #e6f2ff;
-    background-image: url("images/background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-
 /* Element Selector */
 h2 {
     color: darkblue;
