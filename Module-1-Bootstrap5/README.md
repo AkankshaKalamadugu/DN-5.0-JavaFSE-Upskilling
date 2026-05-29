@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-The Local Community Event Portal** is a responsive web page developed using **HTML5, Bootstrap 5, and Bootstrap Icons**. This project is created to practice Bootstrap concepts and understand how Bootstrap components can be used to build a simple and attractive website.
+The Local Community Event Portal is a responsive web page developed using **HTML5, Bootstrap 5, and Bootstrap Icons**. This project is created to practice Bootstrap concepts and understand how Bootstrap components can be used to build a simple and attractive website.
 
 The portal is designed for a local community where users can view upcoming events, explore event details, register for activities, and read frequently asked questions. The webpage is responsive, so it works properly on different screen sizes such as mobile phones, tablets, and desktops.
 
@@ -101,8 +101,8 @@ The portal includes the following community events:
 ```text
 Bootstrap-5
 ├── images
-├── index.html
-└── README.md
+├── README.md
+└── index.html
 ```
 Learning Outcome
 
