@@ -97,8 +97,8 @@ Some of the important exercises include:
 ```text
 Module-2-ANSI-SQL-Using-MySQL/
 │
-├── schema.sql
+├── README.md
 ├── data.sql
 ├── queries.sql
-└── README.md
+└── schema.sql
 ```
